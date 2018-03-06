@@ -39,3 +39,18 @@ export function getRoomData(roomId, logId){
         });
     }
 }
+
+export function getChatLog(log){
+    return {
+        type: types.GET_CHAT_LOG,
+        payload: log
+    }
+}
+
+export function sendNewMessage(logId, msg){
+    db.ref(`/chat-logs/${logId}`).push(msg);
+
+    return {
+        type: types.SEND_NEW_MESSAGE,
+    }
+}
